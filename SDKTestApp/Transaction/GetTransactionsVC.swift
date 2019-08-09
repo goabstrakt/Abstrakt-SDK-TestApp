@@ -181,7 +181,7 @@ class GetTransactionsVC: UIViewController {
     
     func reloadTableView(transactions: [Transaction]) {
         self.transactions = transactions.sorted(by: { (first, second) -> Bool in
-            first.blockTimestamp!.compare(second.blockTimestamp!) == .orderedDescending
+            first.timestamp!.compare(second.timestamp!) == .orderedDescending
         })
         emptyView.alpha = transactions.count == 0 ? 1 : 0
         tblMain.reloadData()

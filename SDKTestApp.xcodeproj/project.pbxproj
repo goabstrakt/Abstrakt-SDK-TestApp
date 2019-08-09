@@ -15,7 +15,6 @@
 		89450BFD22F02D4100694E90 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89450BFC22F02D4100694E90 /* LoginViewController.swift */; };
 		89450C0322F0434700694E90 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89450C0222F0434700694E90 /* ProfileViewController.swift */; };
 		89450C0522F074FF00694E90 /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89450C0422F074FF00694E90 /* AccountsViewController.swift */; };
-		89450C0922F0761F00694E90 /* AccountListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89450C0822F0761F00694E90 /* AccountListCell.swift */; };
 		896F351822F1C6AC00745130 /* SendTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896F351722F1C6AC00745130 /* SendTransactionVC.swift */; };
 		898A23CA22F0838F008290E0 /* TransactionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A23C922F0838F008290E0 /* TransactionsVC.swift */; };
 		898A23CC22F08481008290E0 /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A23CB22F08481008290E0 /* CreateAccountVC.swift */; };
@@ -72,7 +71,6 @@
 		89450BFC22F02D4100694E90 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		89450C0222F0434700694E90 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		89450C0422F074FF00694E90 /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
-		89450C0822F0761F00694E90 /* AccountListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListCell.swift; sourceTree = "<group>"; };
 		896F351722F1C6AC00745130 /* SendTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTransactionVC.swift; sourceTree = "<group>"; };
 		898A23C922F0838F008290E0 /* TransactionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsVC.swift; sourceTree = "<group>"; };
 		898A23CB22F08481008290E0 /* CreateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
@@ -184,7 +182,6 @@
 		89450C0722F0760100694E90 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				89450C0822F0761F00694E90 /* AccountListCell.swift */,
 				89C2BA1122F2E0A700B858EA /* ConnectionCell.swift */,
 				8938AF1822FC415100516FAA /* GeneralTableViewCell.swift */,
 				8938AF1922FC415100516FAA /* GeneralTableViewCell.xib */,
@@ -479,7 +476,6 @@
 				8938AF1722FC2BA800516FAA /* LocalMnemonicsVC.swift in Sources */,
 				89450C0322F0434700694E90 /* ProfileViewController.swift in Sources */,
 				896F351822F1C6AC00745130 /* SendTransactionVC.swift in Sources */,
-				89450C0922F0761F00694E90 /* AccountListCell.swift in Sources */,
 				898A23CA22F0838F008290E0 /* TransactionsVC.swift in Sources */,
 				89C2BA1422F31DA800B858EA /* GetTransactionsVC.swift in Sources */,
 				89450BFD22F02D4100694E90 /* LoginViewController.swift in Sources */,
@@ -660,7 +656,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8W4DQ8JDU5;
+				DEVELOPMENT_TEAM = NRRPP2FX27;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -688,7 +684,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8W4DQ8JDU5;
+				DEVELOPMENT_TEAM = NRRPP2FX27;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

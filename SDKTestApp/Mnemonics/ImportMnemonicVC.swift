@@ -35,6 +35,7 @@ class ImportMnemonicVC: UIViewController {
     //MARK: - Setup UI
     
     func setupUi() {
+        
         dropDown.anchorView = txtBlockchainNetwork
         dropDown.dataSource = Constant.coinNames
         dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)

@@ -38,7 +38,7 @@ class GeneralTableViewCell: UITableViewCell {
         var accountType = ""
         
         if let blockchainNetwork = account.blockchainNetwork {
-            accountType = Constant.coinShortNames[blockchainNetwork.rawValue] ?? ""
+            accountType = Constant.coinNames[blockchainNetwork.rawValue]
         }
         
         self.lblAccountBalance.text = "$0.00"
@@ -50,8 +50,10 @@ class GeneralTableViewCell: UITableViewCell {
         
         self.lblAccountNumber.text = address
         
+        let roundTo = getRoundDigit(for: blockchainNetwork)
+        
         Abstrakt.shared.getAccountBalance(accountAddress: address, blockchainNetwork: blockchainNetwork) { (accountBalance, accountConversionBalance) in
-            self.lblAccountValue.text = accountBalance.rounded(toPlaces: 5).toString(decimal: 4) + " " + accountType
+            self.lblAccountValue.text = accountBalance.rounded(toPlaces: roundTo).toString(decimal: roundTo) + " " + accountType
             self.lblAccountBalance.text = Constant.getDollarDisplayValue(amount: accountConversionBalance)
         }
     }
@@ -60,14 +62,14 @@ class GeneralTableViewCell: UITableViewCell {
         self.lblAccountType.isHidden = false
         self.lblAccountName.text = transaction.from ?? ""
         
-        self.lblAccountType.text = self.getDateAndTime(timeStamp: transaction.blockTimestamp ?? Date())
+        self.lblAccountType.text = self.getDateAndTime(timeStamp: transaction.timestamp ?? Date())
         
         var accountType = ""
         guard let blockchainNetwork = transaction.blockchainNetwork  else {
             return
         }
         
-        accountType = Constant.coinShortNames[blockchainNetwork.rawValue] ?? ""
+        accountType = Constant.coinNames[blockchainNetwork.rawValue]
         
         self.lblAccountBalance.text = "$0.00"
         var amount = transaction.value ?? 0
@@ -76,7 +78,9 @@ class GeneralTableViewCell: UITableViewCell {
             amount = amount / 1000000000000000000
         }
         
-        self.lblAccountValue.text = amount.rounded(toPlaces: 5).toString(decimal: 4) + " " + accountType
+        let roundTo = getRoundDigit(for: blockchainNetwork)
+        
+        self.lblAccountValue.text = amount.rounded(toPlaces: roundTo).toString(decimal: roundTo) + " " + accountType
         
         if let blockchainNetwork = transaction.blockchainNetwork, let marketValue = Abstrakt.shared.getMarketValue(blockchainNetwork: getMainnetfromTestnetForMarketValue(blockchainNetwork: blockchainNetwork)) {
             let convertedClosePrice = marketValue.closePrice!.replacingOccurrences(of: "$", with: "")
@@ -110,5 +114,13 @@ class GeneralTableViewCell: UITableViewCell {
         return blockchainNetwork
     }
     
+    func getRoundDigit(for blockchainNetwork: BlockchainNetwork) -> Int {
+        switch blockchainNetwork {
+        case .AionMainnet, .AionTestnet, .EthMainnet, .EthTestnet:
+            return 9
+        case .BitcoinTestnet, .BitcoinMainnet:
+            return 8
+        }
+    }
 }
 

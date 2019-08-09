@@ -78,12 +78,12 @@ class SendTransactionVC: UIViewController {
         let selectedAccount = accounts[addressIndex]
         let blockchainNetwork = selectedAccount.blockchainNetwork!
         
-        self.txtBlockchain.text = Constant.coinShortNames[blockchainNetwork.rawValue]
+        self.txtBlockchain.text = Constant.coinNames[blockchainNetwork.rawValue]
         
         var accountType = ""
         
         if let blockchainNetwork = selectedAccount.blockchainNetwork {
-            accountType = Constant.coinShortNames[blockchainNetwork.rawValue] ?? ""
+            accountType = Constant.coinNames[blockchainNetwork.rawValue] ?? ""
         }
         
         self.lblAmount.text = "Amount in \(Constant.coinNames[selectedAccount.blockchainNetwork!.rawValue])"

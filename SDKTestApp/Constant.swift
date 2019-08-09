@@ -36,9 +36,7 @@ public class Constant {
     
     static let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    static let coinShortNames: [Int: String] = [0: "AION", 1: "AION Testnet", 2: "ETH", 3: "ETH Testnet", 4: "BTC", 5: "BTC Testnet"]
-    
-    static let coinNames = ["AION", "AION Testnet", "ETH", "ETH Testnet", "BTC", "BTC Testnet"]
+    static let coinNames = ["AionMainnet", "AionTestnet", "EthMainnet", "EthTestnet", "BitcoinMainnet", "BitcoinTestnet"]
     
     static let blockchainNetworks = [BlockchainNetwork.AionMainnet, BlockchainNetwork.AionTestnet, BlockchainNetwork.EthMainnet, BlockchainNetwork.EthTestnet, BlockchainNetwork.BitcoinMainnet, BlockchainNetwork.BitcoinTestnet]
     

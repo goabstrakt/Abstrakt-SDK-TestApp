@@ -22,7 +22,7 @@ class TransactionsVC: UIViewController {
         Abstrakt.shared.getTransactions(blockchainNetworks: Constant.blockchainNetworks, completion: { (transactions) in
             dataSource = transactions
             dataSource = dataSource.sorted(by: { (first, second) -> Bool in
-                first.blockTimestamp!.compare(second.blockTimestamp!) == .orderedDescending
+                first.timestamp!.compare(second.timestamp!) == .orderedDescending
             })
             self.emptyView.alpha = dataSource.count > 0 ? 0 : 1
         })

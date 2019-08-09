@@ -77,7 +77,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Abstrakt:
-    :commit: d33a05d27997c507e9de2e091a8f8748a7a84a0a
+    :commit: ce1ca576b29d2e9fcd2dc93a6f8277e86f6afe34
     :git: https://github.com/goabstrakt/Abstrakt-iOS-SDK.git
 
 SPEC CHECKSUMS:
@@ -102,4 +102,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 2967abbd64ef51dd65693d27576b7274c8a62eee
 
-COCOAPODS: 1.7.0
+COCOAPODS: 1.7.5
