@@ -81,6 +81,7 @@ class CreateAccountVC: UIViewController {
 extension CreateAccountVC: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == txtCoin {
+            txtName.resignFirstResponder()
             dropDown.show()
             return false
         }

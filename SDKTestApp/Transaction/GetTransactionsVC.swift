@@ -50,66 +50,78 @@ class GetTransactionsVC: UIViewController {
         super.viewDidLoad()
 
         setupUI()
+        initTableView()
+    }
+    
+    func initTableView() {
+        tblMain.register(UINib(nibName: "GeneralTableViewCell", bundle: nil), forCellReuseIdentifier: "GeneralTableViewCell")
+        tblMain.rowHeight = UITableView.automaticDimension
+        tblMain.estimatedRowHeight = 100
+        tblMain.tableFooterView = UIView()
     }
     
     func setupUI() {
-        self.view.bringSubviewToFront(emptyView)
         
-        tblMain.tableFooterView = UIView()
-        
-        transactionByDropDown.anchorView = txtTransactionBy
-        transactionByDropDown.dataSource = transactionBy
-        transactionByDropDown.bottomOffset = CGPoint(x: 0, y:(transactionByDropDown.anchorView?.plainView.bounds.height)!)
-        
-        transactionByDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
-            print("Selected item: \(item) at index: \(index)")
-            self.transactionByIndex = index
-            self.txtTransactionBy.text = item
+        if accounts.count == 0 {
+            Dialog.showMessage("No Accounts Found!!!", message: "There is no account available. Create new account to send/recieve transaction.", viewController: self, completion: {
+                self.navigationController?.popViewController(animated: true)
+            })
+        } else {
+            self.view.bringSubviewToFront(emptyView)
+            transactionByDropDown.anchorView = txtTransactionBy
+            transactionByDropDown.dataSource = transactionBy
+            transactionByDropDown.bottomOffset = CGPoint(x: 0, y:(transactionByDropDown.anchorView?.plainView.bounds.height)!)
             
-            switch index {
-            case 0:
-                self.addressStack.isHidden = true
-                self.blockchainStack.isHidden = true
-            case 1:
-                self.addressStack.isHidden = false
-                self.blockchainStack.isHidden = true
-            case 2:
-                self.addressStack.isHidden = true
-                self.blockchainStack.isHidden = false
-            default:
-                self.addressStack.isHidden = true
-                self.blockchainStack.isHidden = true
+            transactionByDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+                print("Selected item: \(item) at index: \(index)")
+                self.transactionByIndex = index
+                self.txtTransactionBy.text = item
+                
+                switch index {
+                case 0:
+                    self.addressStack.isHidden = true
+                    self.blockchainStack.isHidden = true
+                case 1:
+                    self.addressStack.isHidden = false
+                    self.blockchainStack.isHidden = true
+                case 2:
+                    self.addressStack.isHidden = true
+                    self.blockchainStack.isHidden = false
+                default:
+                    self.addressStack.isHidden = true
+                    self.blockchainStack.isHidden = true
+                }
+                
             }
             
+            txtTransactionBy.text = transactionBy[transactionByIndex]
+            
+            let addresses = accounts.map { $0.address ?? "" }
+            
+            addressDropDown.anchorView = txtAddress
+            addressDropDown.dataSource = addresses
+            addressDropDown.bottomOffset = CGPoint(x: 0, y:(addressDropDown.anchorView?.plainView.bounds.height)!)
+            
+            addressDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+                print("Selected item: \(item) at index: \(index)")
+                self.addressIndex = index
+                self.txtAddress.text = item
+            }
+            
+            txtAddress.text = addresses[addressIndex]
+            
+            blockchainDropDown.anchorView = txtBlockchain
+            blockchainDropDown.dataSource = Constant.coinNames
+            blockchainDropDown.bottomOffset = CGPoint(x: 0, y:(blockchainDropDown.anchorView?.plainView.bounds.height)!)
+            
+            blockchainDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+                print("Selected item: \(item) at index: \(index)")
+                self.blockchainNetworkIndex = index
+                self.txtBlockchain.text = item
+            }
+            
+            txtBlockchain.text = Constant.coinNames[blockchainNetworkIndex]
         }
-        
-        txtTransactionBy.text = transactionBy[transactionByIndex]
-        
-        let addresses = accounts.map { $0.address ?? "" }
-        
-        addressDropDown.anchorView = txtAddress
-        addressDropDown.dataSource = addresses
-        addressDropDown.bottomOffset = CGPoint(x: 0, y:(addressDropDown.anchorView?.plainView.bounds.height)!)
-        
-        addressDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
-            print("Selected item: \(item) at index: \(index)")
-            self.addressIndex = index
-            self.txtAddress.text = item
-        }
-        
-        txtAddress.text = addresses[addressIndex]
-        
-        blockchainDropDown.anchorView = txtBlockchain
-        blockchainDropDown.dataSource = Constant.coinNames
-        blockchainDropDown.bottomOffset = CGPoint(x: 0, y:(blockchainDropDown.anchorView?.plainView.bounds.height)!)
-        
-        blockchainDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
-            print("Selected item: \(item) at index: \(index)")
-            self.blockchainNetworkIndex = index
-            self.txtBlockchain.text = item
-        }
-        
-        txtBlockchain.text = Constant.coinNames[blockchainNetworkIndex]
     }
     
     //MARK: - UIButton Action Methods
@@ -184,7 +196,7 @@ extension GetTransactionsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AccountListCell", for: indexPath) as! AccountListCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GeneralTableViewCell", for: indexPath) as! GeneralTableViewCell
         
         let transaction = transactions[indexPath.row]
         

@@ -16,11 +16,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var viewMqttStatus: UIView!
     @IBOutlet weak var lblMqttStatus: UILabel!
     
-    
     //MARK: - Variables
     
     var sections = ["Sample Screens", "Test Functions"]
-    var rows = [["Profile", "Account Management","Transactions", "Contacts"], ["Create Account", "Send Transaction", "Get Transaction", "Import Mnemonic", "Get Account Balance"]]
+    var rows = [[0:"Profile",
+                 1:"Account Management",
+                 2:"Transactions",
+                 3:"Contacts"],
+                [0:"Create Account",
+                 1:"Import Mnemonic",
+                 2:"Get Local Mnemonics",
+                 3:"Send Transaction",
+                 4:"Get Transaction",
+                 5:"Get Account Balance"]]
 //        , "Get Local Mnemonic" , "Backup Mnemonic", "Backup Account"]]
     
     //MARK: - Lifecycle
@@ -44,6 +52,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tblMain.deselectRow(at: selectedIndexPath, animated: true)
         setMqttConnectionStatus()
+    }
+    
+    //MARK: - UIButton Action Methods
+    
+    @IBAction func btnLogout_Click(_ sender: Any) {
+        Dialog.showAlert("Are you sure?", message: "Do you really want to logout?", actions: ["Yes", "No"], viewController: self, handler: [{ Abstrakt.shared.logout()
+            Constant.appDelegate.makeRoot() }, {}])
     }
     
     // MARK: - UITableView Data Source Functions
@@ -83,25 +98,32 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.performSegue(withIdentifier: SegueIdentifier.connectionSegue.rawValue, sender: self)
             default:
                 Dialog.showMessage("wtf!", message: "", viewController: self)
+                break
             }
         }  else if indexPath.section == 1 {
             switch indexPath.row {
             case 0:
                 self.performSegue(withIdentifier: SegueIdentifier.createAccountSegue.rawValue, sender: self)
+                break
             case 1:
-                self.performSegue(withIdentifier: SegueIdentifier.sendTransactionSegue.rawValue, sender: self)
-                break
-            case 2:
-                self.performSegue(withIdentifier: SegueIdentifier.getTransactions.rawValue, sender: self)
-                break
-            case 3:
                 self.performSegue(withIdentifier: SegueIdentifier.importMnemonicSegue.rawValue, sender: self)
                 break
+            case 2:
+                self.performSegue(withIdentifier: SegueIdentifier.getMnemonicsSegue.rawValue, sender: self)
+                break
+            case 3:
+                self.performSegue(withIdentifier: SegueIdentifier.sendTransactionSegue.rawValue, sender: self)
+                break
             case 4:
+                self.performSegue(withIdentifier: SegueIdentifier.getTransactions.rawValue, sender: self)
+                break
+            case 5:
                 self.performSegue(withIdentifier: SegueIdentifier.accountBalanceSegue.rawValue, sender: self)
+                break
             
             default:
                 Dialog.showMessage("wtf!", message: "", viewController: self)
+                break
             }
         }
     }
@@ -131,6 +153,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.createAccountSegue.rawValue {
             let dest = segue.destination as! CreateAccountVC
+            dest.isPushed = true
+        } else if segue.identifier == SegueIdentifier.sendTransactionSegue.rawValue {
+            let dest = segue.destination as! SendTransactionVC
             dest.isPushed = true
         }
     }

@@ -3,6 +3,7 @@ PODS:
     - Auth0 (~> 1.13.0)
     - BigInt (~> 3.1)
     - CryptoSwift (~> 0.13.1)
+    - HockeySDK
     - JWTDecode (~> 2.1)
     - KeychainSwift (~> 13.0)
     - secp256k1.swift
@@ -17,6 +18,7 @@ PODS:
   - HockeySDK (5.1.4):
     - HockeySDK/DefaultLib (= 5.1.4)
   - HockeySDK/DefaultLib (5.1.4)
+  - IQKeyboardManager (6.4.0)
   - JWTDecode (2.3.0)
   - KeychainSwift (13.0.0)
   - libwebp (1.0.3):
@@ -38,13 +40,16 @@ PODS:
   - SipHash (1.2.2)
   - SocketRocket (0.5.1)
   - SwiftyJSON (4.1.0)
+  - Toast-Swift (5.0.0)
 
 DEPENDENCIES:
-  - Abstrakt (from `../../abstrakt-sdk-internal`)
+  - Abstrakt (from `https://github.com/goabstrakt/Abstrakt-iOS-SDK.git`)
   - DropDown
   - HockeySDK
+  - IQKeyboardManager
   - MBProgressHUD
   - SDWebImage/WebP
+  - Toast-Swift (~> 5.0.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -53,6 +58,7 @@ SPEC REPOS:
     - CryptoSwift
     - DropDown
     - HockeySDK
+    - IQKeyboardManager
     - JWTDecode
     - KeychainSwift
     - libwebp
@@ -63,18 +69,25 @@ SPEC REPOS:
     - SipHash
     - SocketRocket
     - SwiftyJSON
+    - Toast-Swift
 
 EXTERNAL SOURCES:
   Abstrakt:
-    :path: "../../abstrakt-sdk-internal"
+    :git: https://github.com/goabstrakt/Abstrakt-iOS-SDK.git
+
+CHECKOUT OPTIONS:
+  Abstrakt:
+    :commit: d33a05d27997c507e9de2e091a8f8748a7a84a0a
+    :git: https://github.com/goabstrakt/Abstrakt-iOS-SDK.git
 
 SPEC CHECKSUMS:
-  Abstrakt: aabf4b4c1eec60321cadec04d1450a1b647b7c3e
+  Abstrakt: 37a5b5e075be588cf69b7a83d875108ed47bd315
   Auth0: 7e99e1ca69543bc243d9687fd612057072f3eaaf
   BigInt: 76b5dfdfa3e2e478d4ffdf161aeede5502e2742f
   CryptoSwift: ff68c35a53e03177d31aaa2c1e8b3e010aeed6cb
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   HockeySDK: 15afe6bc0a5bfe3a531fd73dbf082095f37dac3b
+  IQKeyboardManager: fcef267266379c003181fc3592f6bdb8bf4db839
   JWTDecode: fb77675c8049c1a7e9433c7cf448c3ce33ee4ac7
   KeychainSwift: 23d6c16cbc33f20fafa30c3d783241b4b87d998c
   libwebp: 057912d6d0abfb6357d8bb05c0ea470301f5d61e
@@ -85,7 +98,8 @@ SPEC CHECKSUMS:
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
+  Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
 
-PODFILE CHECKSUM: d84cf02dec8328ab57ff22529352dc9cee26d469
+PODFILE CHECKSUM: 2967abbd64ef51dd65693d27576b7274c8a62eee
 
 COCOAPODS: 1.7.0

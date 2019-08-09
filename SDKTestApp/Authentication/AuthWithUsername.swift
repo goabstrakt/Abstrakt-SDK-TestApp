@@ -21,10 +21,12 @@ class AuthWithUsername: UIViewController {
         UserDefaults.standard.set(true, forKey: "clean_connection")
         if let email = txtEmail.text, email.count > 0, let password = txtPassword.text, password.count > 0 {
             Abstrakt.shared.authenticateWithEmailAndPassword(email: email, password: password, completion: { (status) in
-                if status == "success" {
-                    Constant.appDelegate.makeRoot()
-                } else {
-                    Dialog.showMessage(status ?? "Failed to login", message: "", viewController: self)
+                DispatchQueue.main.sync {
+                    if status == "success" {
+                        Constant.appDelegate.makeRoot()
+                    } else {
+                        Dialog.showMessage(status ?? "Failed to login", message: "", viewController: self)
+                    }
                 }
             })
         } else {
@@ -46,8 +48,8 @@ class AuthWithUsername: UIViewController {
     }
     
     func setInitialValue() {
-        self.txtEmail.text = "daniel1@wayne-enterprises.com"
-        self.txtPassword.text = "BatmanLaidAnEgg2"
+//        self.txtEmail.text = "daniel1@wayne-enterprises.com"
+//        self.txtPassword.text = "BatmanLaidAnEgg2"
     }
     
     //MARK: - Helper Methods

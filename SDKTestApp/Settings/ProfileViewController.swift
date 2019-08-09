@@ -43,8 +43,8 @@ class ProfileViewController: UIViewController {
     
     //MARK: - UIButton Action Methods
     @IBAction func btnLogout_Click(_ sender: Any) {
-        Abstrakt.shared.logout()
-        Constant.appDelegate.makeRoot()
+        Dialog.showAlert("Are you sure?", message: "Do you really want to logout?", actions: ["Yes", "No"], viewController: self, handler: [{ Abstrakt.shared.logout()
+            Constant.appDelegate.makeRoot() }, {}])
     }
 
 }

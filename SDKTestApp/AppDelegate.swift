@@ -9,6 +9,7 @@
 import UIKit
 import AbstraktSDK
 import DropDown
+import IQKeyboardManager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         DropDown.startListeningToKeyboard()
+        IQKeyboardManager.shared().shouldResignOnTouchOutside = true
+        IQKeyboardManager.shared().isEnabled = true
         
         makeRoot()
         

@@ -6,11 +6,14 @@ target 'SDKTestApp' do
   use_frameworks!
 
   # Pods for SDKTestApp
+#  pod 'Abstrakt', :path => '../../abstrakt-sdk-internal'
   pod 'Abstrakt', :git => 'https://github.com/goabstrakt/Abstrakt-iOS-SDK.git'
   pod 'SDWebImage/WebP'
   pod 'DropDown'
   pod 'MBProgressHUD'
   pod 'HockeySDK' #figure out a way to remove HockeyApp from SDK
+  pod 'IQKeyboardManager'
+  pod 'Toast-Swift', '~> 5.0.0'
 
   target 'SDKTestAppTests' do
     inherit! :search_paths

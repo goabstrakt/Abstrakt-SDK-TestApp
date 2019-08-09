@@ -34,23 +34,36 @@ class GetAccountBalanceVC: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+        initTableView()
+    }
+    
+    func initTableView() {
+        tblMain.register(UINib(nibName: "GeneralTableViewCell", bundle: nil), forCellReuseIdentifier: "GeneralTableViewCell")
+        tblMain.rowHeight = UITableView.automaticDimension
+        tblMain.estimatedRowHeight = 100
         tblMain.tableFooterView = UIView()
     }
     
     func setupUI() {
-        txtAddress.text = accounts[selectedIndex].address ?? ""
-        
-        dropDown.anchorView = txtAddress
-        dropDown.dataSource = accounts.map { $0.address ?? "" }
-        dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
-        
-        dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
-            print("Selected item: \(item) at index: \(index)")
-            self.selectedIndex = index
-            self.txtAddress.text = item
+        if accounts.count == 0 {
+            Dialog.showMessage("No Accounts Found!!!", message: "", viewController: self, completion: {
+                self.navigationController?.popViewController(animated: true)
+            })
+        } else {
+            txtAddress.text = accounts[selectedIndex].address ?? ""
+            
+            dropDown.anchorView = txtAddress
+            dropDown.dataSource = accounts.map { $0.address ?? "" }
+            dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
+            
+            dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+                print("Selected item: \(item) at index: \(index)")
+                self.selectedIndex = index
+                self.txtAddress.text = item
+            }
+            
+            txtAddress.text = accounts[selectedIndex].address ?? ""
         }
-        
-        txtAddress.text = accounts[selectedIndex].address ?? ""
     }
     
     
@@ -72,7 +85,7 @@ extension GetAccountBalanceVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AccountListCell", for: indexPath) as! AccountListCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GeneralTableViewCell", for: indexPath) as! GeneralTableViewCell
         
         let account = accountsArray[indexPath.row]
         

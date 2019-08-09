@@ -46,9 +46,15 @@ class TransactionsVC: UIViewController {
         
         self.view.bringSubviewToFront(emptyView)
         
-        tblMain.tableFooterView = UIView()
-        
         Abstrakt.shared.delegate = self
+        initTableView()
+    }
+    
+    func initTableView() {
+        tblMain.register(UINib(nibName: "GeneralTableViewCell", bundle: nil), forCellReuseIdentifier: "GeneralTableViewCell")
+        tblMain.rowHeight = UITableView.automaticDimension
+        tblMain.estimatedRowHeight = 100
+        tblMain.tableFooterView = UIView()
     }
     
     //MARK: - UIButton Action Methods
@@ -69,7 +75,7 @@ extension TransactionsVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AccountListCell", for: indexPath) as! AccountListCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GeneralTableViewCell", for: indexPath) as! GeneralTableViewCell
         
         let transaction = transactions[indexPath.row]
         

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8938AF1722FC2BA800516FAA /* LocalMnemonicsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8938AF1622FC2BA800516FAA /* LocalMnemonicsVC.swift */; };
+		8938AF1A22FC415100516FAA /* GeneralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8938AF1822FC415100516FAA /* GeneralTableViewCell.swift */; };
+		8938AF1B22FC415100516FAA /* GeneralTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8938AF1922FC415100516FAA /* GeneralTableViewCell.xib */; };
 		89450BF722EF0CD600694E90 /* AuthWithUsername.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89450BF622EF0CD600694E90 /* AuthWithUsername.swift */; };
 		89450BFB22EF0DE600694E90 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89450BFA22EF0DE600694E90 /* Constant.swift */; };
 		89450BFD22F02D4100694E90 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89450BFC22F02D4100694E90 /* LoginViewController.swift */; };
@@ -23,6 +26,7 @@
 		89C2BA1822F3342700B858EA /* GetAccountBalanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C2BA1722F3342700B858EA /* GetAccountBalanceVC.swift */; };
 		8CC14AB169FD4885BD78879D /* Pods_SDKTestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B504E9979DC94C29A51BDA /* Pods_SDKTestApp.framework */; };
 		E247BA8A22FA1050004BBDFE /* exportOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = E247BA8922FA1050004BBDFE /* exportOptions.plist */; };
+		E2AF168022FCCF4300E98D2C /* Abstrakt.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2AF167F22FCCF4200E98D2C /* Abstrakt.plist */; };
 		E2D634AE22A273470026017E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D634AD22A273470026017E /* AppDelegate.swift */; };
 		E2D634B022A273470026017E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D634AF22A273470026017E /* ViewController.swift */; };
 		E2D634B322A273470026017E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2D634B122A273470026017E /* Main.storyboard */; };
@@ -60,6 +64,9 @@
 		20604024A10D41787285904F /* Pods-SDKTestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDKTestApp.debug.xcconfig"; path = "Target Support Files/Pods-SDKTestApp/Pods-SDKTestApp.debug.xcconfig"; sourceTree = "<group>"; };
 		71BC7E177F291FF074E46537 /* Pods-SDKTestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDKTestApp.release.xcconfig"; path = "Target Support Files/Pods-SDKTestApp/Pods-SDKTestApp.release.xcconfig"; sourceTree = "<group>"; };
 		721B80E1AABAE2065C105DCC /* Pods_SDKTestAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SDKTestAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8938AF1622FC2BA800516FAA /* LocalMnemonicsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalMnemonicsVC.swift; sourceTree = "<group>"; };
+		8938AF1822FC415100516FAA /* GeneralTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTableViewCell.swift; sourceTree = "<group>"; };
+		8938AF1922FC415100516FAA /* GeneralTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeneralTableViewCell.xib; sourceTree = "<group>"; };
 		89450BF622EF0CD600694E90 /* AuthWithUsername.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWithUsername.swift; sourceTree = "<group>"; };
 		89450BFA22EF0DE600694E90 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		89450BFC22F02D4100694E90 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +85,7 @@
 		A7C06983F7544EE1AC6E53C8 /* Pods-SDKTestAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDKTestAppTests.release.xcconfig"; path = "Target Support Files/Pods-SDKTestAppTests/Pods-SDKTestAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		E1D09BFDEED701DA21EB58F2 /* Pods-SDKTestAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDKTestAppTests.debug.xcconfig"; path = "Target Support Files/Pods-SDKTestAppTests/Pods-SDKTestAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E247BA8922FA1050004BBDFE /* exportOptions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = exportOptions.plist; sourceTree = "<group>"; };
+		E2AF167F22FCCF4200E98D2C /* Abstrakt.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Abstrakt.plist; sourceTree = "<group>"; };
 		E2D634AA22A273470026017E /* SDKTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDKTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2D634AD22A273470026017E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2D634AF22A273470026017E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +119,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8938AF1522FC2B8C00516FAA /* Mnemonics */ = {
+			isa = PBXGroup;
+			children = (
+				89C2BA1522F3303B00B858EA /* ImportMnemonicVC.swift */,
+				8938AF1622FC2BA800516FAA /* LocalMnemonicsVC.swift */,
+			);
+			path = Mnemonics;
+			sourceTree = "<group>";
+		};
 		89450BF522EF0C7700694E90 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,7 +169,6 @@
 				898A23C922F0838F008290E0 /* TransactionsVC.swift */,
 				896F351722F1C6AC00745130 /* SendTransactionVC.swift */,
 				89C2BA1322F31DA800B858EA /* GetTransactionsVC.swift */,
-				89C2BA1522F3303B00B858EA /* ImportMnemonicVC.swift */,
 			);
 			path = Transaction;
 			sourceTree = "<group>";
@@ -170,6 +186,8 @@
 			children = (
 				89450C0822F0761F00694E90 /* AccountListCell.swift */,
 				89C2BA1122F2E0A700B858EA /* ConnectionCell.swift */,
+				8938AF1822FC415100516FAA /* GeneralTableViewCell.swift */,
+				8938AF1922FC415100516FAA /* GeneralTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -209,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				89450C0622F075F700694E90 /* Views */,
+				8938AF1522FC2B8C00516FAA /* Mnemonics */,
 				89450C0022F0428800694E90 /* Accounts */,
 				89450BFF22F0428800694E90 /* Connections */,
 				89450BFE22F0428800694E90 /* Settings */,
@@ -222,6 +241,7 @@
 				E2D634B622A273490026017E /* LaunchScreen.storyboard */,
 				E2D634B922A273490026017E /* Info.plist */,
 				E2EB45B222C1A1820098404B /* Auth0.plist */,
+				E2AF167F22FCCF4200E98D2C /* Abstrakt.plist */,
 				E247BA8922FA1050004BBDFE /* exportOptions.plist */,
 			);
 			path = SDKTestApp;
@@ -253,6 +273,7 @@
 			buildConfigurationList = E2D634C722A273490026017E /* Build configuration list for PBXNativeTarget "SDKTestApp" */;
 			buildPhases = (
 				F462ED3176FDB2EBF2696A0E /* [CP] Check Pods Manifest.lock */,
+				E2AF167C22FC87BE00E98D2C /* Bump Version Number */,
 				E2D634A622A273470026017E /* Sources */,
 				E2D634A722A273470026017E /* Frameworks */,
 				E2D634A822A273470026017E /* Resources */,
@@ -331,7 +352,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8938AF1B22FC415100516FAA /* GeneralTableViewCell.xib in Resources */,
 				E2D634B822A273490026017E /* LaunchScreen.storyboard in Resources */,
+				E2AF168022FCCF4300E98D2C /* Abstrakt.plist in Resources */,
 				E2D634B522A273490026017E /* Assets.xcassets in Resources */,
 				E247BA8A22FA1050004BBDFE /* exportOptions.plist in Resources */,
 				E2D634B322A273470026017E /* Main.storyboard in Resources */,
@@ -388,6 +411,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E2AF167C22FC87BE00E98D2C /* Bump Version Number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Bump Version Number";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# do not assign the new build number if there is no changes\n#DIFF=`git diff`\n#if [[ $DIFF == \"\" ]]; then exit 0; fi\n\n# path to the property list where the version number should be changed\nPLIST=\"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n\n# the latest tag that will be used as a short version number\nVERSION_NUMBER=`git describe | awk '{ split($0, a, \"-\"); print a[1] }'`\n\n# the number of commits in repository to be used for the build number\nNUMBER_OF_COMMITS=`git rev-list HEAD --count`\n\n# a future build number should consider its own commit\nBUILD_NUMBER=$((NUMBER_OF_COMMITS+1))\n\n#/usr/libexec/PlistBuddy -c \"Set CFBundleShortVersionString $VERSION_NUMBER\" \"${PLIST}\"\n/usr/libexec/PlistBuddy -c \"Set CFBundleVersion $BUILD_NUMBER\" \"${PLIST}\"\n";
+		};
 		F462ED3176FDB2EBF2696A0E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -435,12 +476,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				89C2BA1822F3342700B858EA /* GetAccountBalanceVC.swift in Sources */,
+				8938AF1722FC2BA800516FAA /* LocalMnemonicsVC.swift in Sources */,
 				89450C0322F0434700694E90 /* ProfileViewController.swift in Sources */,
 				896F351822F1C6AC00745130 /* SendTransactionVC.swift in Sources */,
 				89450C0922F0761F00694E90 /* AccountListCell.swift in Sources */,
 				898A23CA22F0838F008290E0 /* TransactionsVC.swift in Sources */,
 				89C2BA1422F31DA800B858EA /* GetTransactionsVC.swift in Sources */,
 				89450BFD22F02D4100694E90 /* LoginViewController.swift in Sources */,
+				8938AF1A22FC415100516FAA /* GeneralTableViewCell.swift in Sources */,
 				E2D634B022A273470026017E /* ViewController.swift in Sources */,
 				89C2BA1622F3303B00B858EA /* ImportMnemonicVC.swift in Sources */,
 				89C2BA1022F2DE9600B858EA /* ConnectionsVC.swift in Sources */,

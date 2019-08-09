@@ -26,6 +26,7 @@ class SendTransactionVC: UIViewController {
     //MAKR: - Variables
     let addressDropDown = DropDown()
     var addressIndex = 0
+    var isPushed = false
     
     lazy var accounts:[Account] = {
         var dataSource = [Account]()
@@ -53,21 +54,9 @@ class SendTransactionVC: UIViewController {
     //MARK: - Helper Methods
     
     func setupUi() {
-//        //Testnet
-//        txtFromAddress.text = "0xB58dF69fc683C5713490c343C17ABBd88E6D2b8A"
-//        txtToAddress.text = "0x701BD9CD055EFF120fC92b22e6670AaD9704348D"
-//
-//        //Mainnet
-//        txtFromAddress.text = "0xd76144Da270cEb01dD7f9e5675F544fcC8C75207"
-//        txtToAddress.text = "0xB58dF69fc683C5713490c343C17ABBd88E6D2b8A"
-        
-        txtToAddress.text = "n4P5ViiEk6miEJ14mQhu57tho6bSUqtxqo"
-//
-//        txtAmount.text = "320000000000"
-        txtMnemonic.text = "gap depend sure pretty muscle output remove penalty behave latin spoon loop"
-//
-////      btcTestnet
-//        txtFromAddress.text = "n2afS28jGGtM7XYwJER5qWm5wS7pj5vCRk"
+        if isPushed {
+            self.navigationItem.rightBarButtonItem = nil
+        }
         
         addressDropDown.anchorView = txtFromAddress
         addressDropDown.dataSource = accounts.map { $0.address ?? "" }
@@ -86,15 +75,10 @@ class SendTransactionVC: UIViewController {
     }
     
     func setAmountUnit() {
-        var amountType = "in Wei"
         let selectedAccount = accounts[addressIndex]
         let blockchainNetwork = selectedAccount.blockchainNetwork!
         
         self.txtBlockchain.text = Constant.coinShortNames[blockchainNetwork.rawValue]
-        
-        if blockchainNetwork == BlockchainNetwork.BitcoinMainnet || blockchainNetwork == BlockchainNetwork.BitcoinTestnet {
-            amountType = "in Satoshi"
-        }
         
         var accountType = ""
         
@@ -102,7 +86,7 @@ class SendTransactionVC: UIViewController {
             accountType = Constant.coinShortNames[blockchainNetwork.rawValue] ?? ""
         }
         
-        self.lblAmount.text = "Amount \(amountType)"
+        self.lblAmount.text = "Amount in \(Constant.coinNames[selectedAccount.blockchainNetwork!.rawValue])"
         
         Abstrakt.shared.getAccountBalance(accountAddress: selectedAccount.address!, blockchainNetwork: blockchainNetwork) { (accountBalance, accountConversionBalance) in
             let value = accountBalance.rounded(toPlaces: 5).toString(decimal: 4) + " " + accountType
@@ -113,9 +97,15 @@ class SendTransactionVC: UIViewController {
     }
     
     //MARK: - UIButton Action Methods
+    
+    //MARK: - UIButton Action Methods
+    @IBAction func btnCancel_click(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func btnSend_Click(_ sender: Any) {
         
-        guard let fromAddress = txtFromAddress.text, let toAddress = txtToAddress.text, let amount = txtAmount.text, let mnemonic = txtMnemonic.text else {
+        guard let fromAddress = txtFromAddress.text, let toAddress = txtToAddress.text, let amount = txtAmount.text else {
             Dialog.showMessage("Validation Error", message: "Please enter details, and try again", viewController: self)
             return
         }
@@ -125,24 +115,19 @@ class SendTransactionVC: UIViewController {
         if Abstrakt.shared.hasPrivateKey(blockchainNetwork: blockchainNetwork, accountAddress: fromAddress) {
             Abstrakt.shared.sendTransaction(blockchainNetwork: blockchainNetwork, fromAccountAddress: fromAddress, toAccountAddress: toAddress, userId: Abstrakt.shared.getUserId(), amountToTransfer: amount) { (error) in
                 if error == nil {
-                    Dialog.showMessage("Success", message: "Transaction sent successfully", viewController: self)
+                    Dialog.showMessage("Success", message: "Transaction sent successfully", viewController: self, completion: {
+                        if self.isPushed {
+                            self.navigationController?.popViewController(animated: true)
+                        } else {
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                    })
                 } else {
                     Dialog.showMessage("Error", message: "Error while sending transactoin: \(String(describing: error))", viewController: self)
                 }
             }
         } else {
-            Abstrakt.shared.importMnemonic(mnemonic: mnemonic, nickName: "Test Import", blockchainNetwork: blockchainNetwork) { (error) in
-                if error == nil {
-                    Abstrakt.shared.sendTransaction(blockchainNetwork: blockchainNetwork, fromAccountAddress: fromAddress, toAccountAddress: toAddress, userId: Abstrakt.shared.getUserId(), amountToTransfer: amount) { (error) in
-                        if error == nil {
-                            Dialog.showMessage("Success", message: "Transaction sent successfully", viewController: self)
-                        } else {
-                            Dialog.showMessage("Error", message: "Error while sending transactoin: \(String(describing: error))", viewController: self)
-                        }
-                    }
-                }
-            }
-            print("Privare key not found")
+            Dialog.showMessage("No Private key found!!", message: "Import mnemonic first to send transaction.", viewController: self)
         }
     }
     

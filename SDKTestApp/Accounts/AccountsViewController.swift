@@ -8,6 +8,7 @@
 
 import UIKit
 import AbstraktSDK
+import Toast_Swift
 
 class AccountsViewController: UIViewController {
     //MARK: - IBOutlets
@@ -33,12 +34,17 @@ class AccountsViewController: UIViewController {
 
         self.view.bringSubviewToFront(emptyView)
         
-        tblMain.tableFooterView = UIView()
         Abstrakt.shared.delegate = self
+        
+        self.initTableView()
     }
     
-    func reloadTable() {
-        
+    //MARK: - Helper Methods
+    func initTableView() {
+        tblMain.register(UINib(nibName: "GeneralTableViewCell", bundle: nil), forCellReuseIdentifier: "GeneralTableViewCell")
+        tblMain.rowHeight = UITableView.automaticDimension
+        tblMain.estimatedRowHeight = 100
+        tblMain.tableFooterView = UIView()
     }
 }
 
@@ -54,7 +60,7 @@ extension AccountsViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AccountListCell", for: indexPath) as! AccountListCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GeneralTableViewCell", for: indexPath) as! GeneralTableViewCell
         
         let account = accounts[indexPath.row]
         
@@ -98,6 +104,14 @@ extension AccountsViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let account = accounts[indexPath.row]
+        guard let address = account.address else {
+            return
+        }
+        
+        UIPasteboard.general.string = address
+        self.view.makeToast("Address coppied successfully!!")
     }
     
     //MARK: - Helper Methods

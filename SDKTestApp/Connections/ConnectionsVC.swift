@@ -158,18 +158,20 @@ extension ConnectionsVC: UITableViewDelegate, UITableViewDataSource {
         if pendingConnections.count > 0, indexPath.section == 0 {
             let connectionRequest = pendingConnections[indexPath.row]
             
-            guard let sender = connectionRequest.receiver else {
-                
-                cell.imgAvatar.image = nil
-                cell.lblUser.text = "Unnamed"
-                
+            cell.imgAvatar.image = nil
+            cell.lblUser.text = "Unnamed"
+            
+            guard let sender = connectionRequest.receiver, let reciever = connectionRequest.sender else {
                 return cell
             }
             
-            cell.imgAvatar.image = nil
-            cell.imgAvatar.sd_setImage(with: URL(string: sender.avatar), placeholderImage: nil)
-            cell.lblUser.text = sender.name
-            
+            if sender.userId != Abstrakt.shared.getUserId() {
+                cell.imgAvatar.sd_setImage(with: URL(string: sender.avatar), placeholderImage: nil)
+                cell.lblUser.text = sender.name
+            } else if reciever.userId != Abstrakt.shared.getUserId() {
+                cell.imgAvatar.sd_setImage(with: URL(string: reciever.avatar), placeholderImage: nil)
+                cell.lblUser.text = reciever.name
+            }
         } else {
             let connection = connections[indexPath.row]
             
