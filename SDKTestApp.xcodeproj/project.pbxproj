@@ -25,6 +25,11 @@
 		89C2BA1822F3342700B858EA /* GetAccountBalanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C2BA1722F3342700B858EA /* GetAccountBalanceVC.swift */; };
 		8CC14AB169FD4885BD78879D /* Pods_SDKTestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B504E9979DC94C29A51BDA /* Pods_SDKTestApp.framework */; };
 		E247BA8A22FA1050004BBDFE /* exportOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = E247BA8922FA1050004BBDFE /* exportOptions.plist */; };
+		E251E0F32305A76B0056C107 /* KeychainAccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E251E0F12305A76B0056C107 /* KeychainAccountsViewController.swift */; };
+		E251E0F42305A76B0056C107 /* KeychainMnemonicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E251E0F22305A76B0056C107 /* KeychainMnemonicsViewController.swift */; };
+		E251E0F723061D8A0056C107 /* LocalAccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E251E0F523061D890056C107 /* LocalAccountsViewController.swift */; };
+		E251E0F823061D8A0056C107 /* RestoreKeychainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E251E0F623061D890056C107 /* RestoreKeychainVC.swift */; };
+		E251E0FA230623AE0056C107 /* BackupKeychainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E251E0F9230623AE0056C107 /* BackupKeychainVC.swift */; };
 		E2AF168022FCCF4300E98D2C /* Abstrakt.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2AF167F22FCCF4200E98D2C /* Abstrakt.plist */; };
 		E2D634AE22A273470026017E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D634AD22A273470026017E /* AppDelegate.swift */; };
 		E2D634B022A273470026017E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D634AF22A273470026017E /* ViewController.swift */; };
@@ -83,6 +88,11 @@
 		A7C06983F7544EE1AC6E53C8 /* Pods-SDKTestAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDKTestAppTests.release.xcconfig"; path = "Target Support Files/Pods-SDKTestAppTests/Pods-SDKTestAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		E1D09BFDEED701DA21EB58F2 /* Pods-SDKTestAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDKTestAppTests.debug.xcconfig"; path = "Target Support Files/Pods-SDKTestAppTests/Pods-SDKTestAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E247BA8922FA1050004BBDFE /* exportOptions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = exportOptions.plist; sourceTree = "<group>"; };
+		E251E0F12305A76B0056C107 /* KeychainAccountsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainAccountsViewController.swift; sourceTree = "<group>"; };
+		E251E0F22305A76B0056C107 /* KeychainMnemonicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainMnemonicsViewController.swift; sourceTree = "<group>"; };
+		E251E0F523061D890056C107 /* LocalAccountsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalAccountsViewController.swift; sourceTree = "<group>"; };
+		E251E0F623061D890056C107 /* RestoreKeychainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestoreKeychainVC.swift; sourceTree = "<group>"; };
+		E251E0F9230623AE0056C107 /* BackupKeychainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupKeychainVC.swift; sourceTree = "<group>"; };
 		E2AF167F22FCCF4200E98D2C /* Abstrakt.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Abstrakt.plist; sourceTree = "<group>"; };
 		E2D634AA22A273470026017E /* SDKTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDKTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2D634AD22A273470026017E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +210,18 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E251E0F02305A7140056C107 /* Backups */ = {
+			isa = PBXGroup;
+			children = (
+				E251E0F12305A76B0056C107 /* KeychainAccountsViewController.swift */,
+				E251E0F22305A76B0056C107 /* KeychainMnemonicsViewController.swift */,
+				E251E0F523061D890056C107 /* LocalAccountsViewController.swift */,
+				E251E0F9230623AE0056C107 /* BackupKeychainVC.swift */,
+				E251E0F623061D890056C107 /* RestoreKeychainVC.swift */,
+			);
+			path = Backups;
+			sourceTree = "<group>";
+		};
 		E2D634A122A273470026017E = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +245,7 @@
 		E2D634AC22A273470026017E /* SDKTestApp */ = {
 			isa = PBXGroup;
 			children = (
+				E251E0F02305A7140056C107 /* Backups */,
 				89450C0622F075F700694E90 /* Views */,
 				8938AF1522FC2B8C00516FAA /* Mnemonics */,
 				89450C0022F0428800694E90 /* Accounts */,
@@ -474,20 +497,25 @@
 			files = (
 				89C2BA1822F3342700B858EA /* GetAccountBalanceVC.swift in Sources */,
 				8938AF1722FC2BA800516FAA /* LocalMnemonicsVC.swift in Sources */,
+				E251E0F32305A76B0056C107 /* KeychainAccountsViewController.swift in Sources */,
 				89450C0322F0434700694E90 /* ProfileViewController.swift in Sources */,
 				896F351822F1C6AC00745130 /* SendTransactionVC.swift in Sources */,
 				898A23CA22F0838F008290E0 /* TransactionsVC.swift in Sources */,
 				89C2BA1422F31DA800B858EA /* GetTransactionsVC.swift in Sources */,
+				E251E0F823061D8A0056C107 /* RestoreKeychainVC.swift in Sources */,
 				89450BFD22F02D4100694E90 /* LoginViewController.swift in Sources */,
 				8938AF1A22FC415100516FAA /* GeneralTableViewCell.swift in Sources */,
+				E251E0FA230623AE0056C107 /* BackupKeychainVC.swift in Sources */,
 				E2D634B022A273470026017E /* ViewController.swift in Sources */,
 				89C2BA1622F3303B00B858EA /* ImportMnemonicVC.swift in Sources */,
+				E251E0F42305A76B0056C107 /* KeychainMnemonicsViewController.swift in Sources */,
 				89C2BA1022F2DE9600B858EA /* ConnectionsVC.swift in Sources */,
 				E2D634AE22A273470026017E /* AppDelegate.swift in Sources */,
 				89C2BA1222F2E0A700B858EA /* ConnectionCell.swift in Sources */,
 				89450BF722EF0CD600694E90 /* AuthWithUsername.swift in Sources */,
 				89450C0522F074FF00694E90 /* AccountsViewController.swift in Sources */,
 				898A23CC22F08481008290E0 /* CreateAccountVC.swift in Sources */,
+				E251E0F723061D8A0056C107 /* LocalAccountsViewController.swift in Sources */,
 				89450BFB22EF0DE600694E90 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -656,7 +684,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NRRPP2FX27;
+				DEVELOPMENT_TEAM = 8W4DQ8JDU5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -684,7 +712,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NRRPP2FX27;
+				DEVELOPMENT_TEAM = 8W4DQ8JDU5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

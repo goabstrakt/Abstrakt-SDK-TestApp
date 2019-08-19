@@ -18,7 +18,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     //MARK: - Variables
     
-    var sections = ["Sample Screens", "Test Functions"]
+    var sections = ["Sample Screens", "Test Functions", "Backup Functions"]
     var rows = [[0:"Profile",
                  1:"Account Management",
                  2:"Transactions",
@@ -28,8 +28,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                  2:"Get Local Mnemonics",
                  3:"Send Transaction",
                  4:"Get Transaction",
-                 5:"Get Account Balance"]]
-//        , "Get Local Mnemonic" , "Backup Mnemonic", "Backup Account"]]
+                 5:"Get Account Balance"],
+                [0:"Get Local Mnemonic",
+                 1:"Get Local Accounts",
+                 2:"Get KeyChain Mnemonics",
+                 3:"Get KeyChain Accounts"]]
+//        ,  , "Backup Mnemonic", "Backup Account"]]
     
     //MARK: - Lifecycle
     
@@ -37,14 +41,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        Abstrakt.shared.setDelegate(controller: self)
+        
         tblMain.reloadData()
         tblMain.tableFooterView = UIView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        Abstrakt.shared.delegate = self
         
         guard let selectedIndexPath = tblMain.indexPathForSelectedRow else {
             return
@@ -120,7 +124,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             case 5:
                 self.performSegue(withIdentifier: SegueIdentifier.accountBalanceSegue.rawValue, sender: self)
                 break
-            
+                
+            default:
+                Dialog.showMessage("wtf!", message: "", viewController: self)
+                break
+            }
+        }  else if indexPath.section == 2 {
+            switch indexPath.row {
+            case 0:
+                self.performSegue(withIdentifier: SegueIdentifier.getMnemonicsSegue.rawValue, sender: self)
+                break
+            case 1:
+                self.performSegue(withIdentifier: SegueIdentifier.getLocalAccountsSegue.rawValue, sender: self)
+                break
+            case 2:
+                self.performSegue(withIdentifier: SegueIdentifier.getKeyChainMnemonicsSegue.rawValue, sender: self)
+                break
+            case 3:
+                self.performSegue(withIdentifier: SegueIdentifier.getKeyChainAccountsSegue.rawValue, sender: self)
+                break
             default:
                 Dialog.showMessage("wtf!", message: "", viewController: self)
                 break

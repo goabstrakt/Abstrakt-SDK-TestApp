@@ -21,6 +21,13 @@ enum SegueIdentifier: String {
     case accountBalanceSegue
     case createAccountSegue
     case getMnemonicsSegue
+    case getLocalAccountsSegue
+    case getKeyChainMnemonicsSegue
+    case getKeyChainAccountsSegue
+    case backupMnemonicSegue
+    case backupAccountSegue
+    case restoreMnemonicSegue
+    case restoreAccountSegue
 }
 
 enum StoredValues: String {

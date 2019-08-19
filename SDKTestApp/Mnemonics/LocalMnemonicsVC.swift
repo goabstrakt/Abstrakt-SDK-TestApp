@@ -16,6 +16,9 @@ class LocalMnemonicsVC: UIViewController {
     @IBOutlet weak var emptyView: UIView!
     
     //MARK: - Variables
+    var keyAlias:String?
+    var detailText:String?
+    
     lazy var mnemonics: [String: String] = {
         var dataSource = [String: String]()
         
@@ -33,6 +36,15 @@ class LocalMnemonicsVC: UIViewController {
         
         self.view.bringSubviewToFront(emptyView)
         tblMain.tableFooterView = UIView()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueIdentifier.backupMnemonicSegue.rawValue {
+            let dest = segue.destination as! BackupKeychainVC
+            dest.isMnemonic = true
+            dest.mnemonicAlias = self.keyAlias
+            dest.detailText = self.detailText
+        }
     }
 }
 
@@ -53,5 +65,14 @@ extension LocalMnemonicsVC: UITableViewDelegate, UITableViewDataSource {
         cell.detailTextLabel?.text = name
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        keyAlias = Array(mnemonics.keys)[indexPath.row]
+        detailText = mnemonics[keyAlias!]
+        
+        self.performSegue(withIdentifier: SegueIdentifier.backupMnemonicSegue.rawValue, sender: self)
     }
 }

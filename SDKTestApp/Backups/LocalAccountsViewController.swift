@@ -1,5 +1,5 @@
 //
-//  AccountsViewController.swift
+//  LocalAccountsViewController.swift
 //  SDKTestApp
 //
 //  Created by Dharmesh Vaghani on 30/07/19.
@@ -10,13 +10,14 @@ import UIKit
 import AbstraktSDK
 import Toast_Swift
 
-class AccountsViewController: UIViewController {
+class LocalAccountsViewController: UIViewController {
     //MARK: - IBOutlets
     @IBOutlet weak var tblMain: UITableView!
     @IBOutlet weak var emptyView: UIView!
     
     //MARK: - Variables
-    
+    var blockchainNetwork:BlockchainNetwork?
+    var accountAddress:String?
     var accounts = [Account]()
     
     //MARK: - Life cycle methods
@@ -40,17 +41,26 @@ class AccountsViewController: UIViewController {
     }
     
     func fetchAccounts() {
-        Abstrakt.shared.getMyAccounts(blockchainNetworks: Constant.blockchainNetworks, completion: { (objects) in
-            self.accounts = objects
+        Abstrakt.shared.getLocalAccounts(blockchainNetworks: Constant.blockchainNetworks, completion: { (accounts) in
+            self.accounts = accounts
             self.emptyView.alpha = self.accounts.count > 0 ? 0 : 1
             self.tblMain.reloadData()
         })
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueIdentifier.backupAccountSegue.rawValue {
+            let dest = segue.destination as! BackupKeychainVC
+            dest.isMnemonic = false
+            dest.blockchainNetwork = self.blockchainNetwork
+            dest.accountAddress = self.accountAddress
+        }
     }
 }
 
 //MARK: - UITableView Delegate and Datasource Methods
 
-extension AccountsViewController : UITableViewDelegate, UITableViewDataSource {
+extension LocalAccountsViewController : UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -104,20 +114,17 @@ extension AccountsViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
         let account = accounts[indexPath.row]
-        guard let address = account.address else {
-            return
-        }
+        self.blockchainNetwork = account.blockchainNetwork
+        self.accountAddress = account.address
         
-        UIPasteboard.general.string = address
-        self.view.makeToast("Address coppied successfully!!")
+        self.performSegue(withIdentifier: SegueIdentifier.backupAccountSegue.rawValue, sender: self)
     }
     
     //MARK: - Helper Methods
     
     func updateAccounts() {
-        Abstrakt.shared.getMyAccounts(blockchainNetworks: Constant.blockchainNetworks) { (accounts) in
+        Abstrakt.shared.getLocalAccounts(blockchainNetworks: Constant.blockchainNetworks) { (accounts) in
             self.accounts = accounts
         }
     }
@@ -125,7 +132,7 @@ extension AccountsViewController : UITableViewDelegate, UITableViewDataSource {
 
 //MARK: - Abstrakt Delegate
 
-extension AccountsViewController: AbstraktDelegate {
+extension LocalAccountsViewController: AbstraktDelegate {
     func accountsUpdated() {
         tblMain.reloadData()
         emptyView.alpha = self.accounts.count == 0 ? 1 : 0
