@@ -1,2 +1,2 @@
 # Abstrakt-iOS-SDK-TestApp
-A demo application displaying the capabilities of Abstrakt SDK
+This is a demo application displaying the capabilities of Abstrakt SDK
